@@ -1,0 +1,27 @@
+# pyproject.toml for the scl_db_analyzer project
+
+[project]
+name = "scl_db_analyzer"
+version = "1.0.0"
+description = "A GUI tool to analyze SCL/DB/UDT files using the tree-sitter-scl parser."
+requires-python = ">=3.10"
+
+# --- This is the most important part ---
+# List all the project's dependencies here.
+dependencies = [
+    # Standard library from PyPI
+    "tree-sitter>=0.21.0",
+
+    # Your custom parser, installed directly from the 'develop' branch on GitHub
+    "tree-sitter-scl @ git+https://github.com/tastenmo/tree-sitter-scl.git@develop"
+]
+
+[project.scripts]
+# This line creates a command-line script to easily run your GUI.
+# After installing, you can just type 'run-analyzer' in your terminal.
+run-analyzer = "gui_analyzer:main"
+
+[build-system]
+# Standard boilerplate for setuptools
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
